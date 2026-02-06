@@ -19,6 +19,7 @@ public class WeatherController {
 
     @GetMapping("/current")
     public WeatherReadingResponseDTO getCurrent(){
+        // TODO: Currently the gets the last reading from ANY sensor, it should be the last reading from ALL sensors
         return weatherService.getCurrent();
     }
 
