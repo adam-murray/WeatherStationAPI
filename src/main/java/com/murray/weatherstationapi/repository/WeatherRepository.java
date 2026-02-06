@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface WeatherRepository
         extends JpaRepository<WeatherReading, Long> {
-    Optional<WeatherReading> findTopByOrderByTimestampDesc();
+    // Optional<WeatherReading> findTopByOrderByTimestampDesc();
 }
