@@ -16,18 +16,14 @@ public class WeatherController {
     public WeatherController(WeatherQueryService weatherService){
         this.weatherService = weatherService;
     }
-    /*
+
     @GetMapping("/current")
     public WeatherReadingResponseDTO getCurrent(){
         return weatherService.getCurrent();
     }
-     */
+
     @GetMapping("/readings")
     public List<WeatherReadingResponseDTO> getAll() {
         return weatherService.getAll();
-    }
-    @GetMapping("/readings/{id}")
-    public WeatherReadingResponseDTO getById(@PathVariable long id){
-        return weatherService.getById(id);
     }
 }

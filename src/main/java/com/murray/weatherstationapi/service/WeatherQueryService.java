@@ -17,24 +17,18 @@ public class WeatherQueryService {
     public WeatherQueryService(WeatherRepository repository) {
         this.repository = repository;
     }
-    /*
+
     @Transactional(readOnly = true)
     public WeatherReadingResponseDTO getCurrent() {
         return repository.findTopByOrderByTimestampDesc()
                 .map(WeatherReadingResponseDTO::from)
                 .orElseThrow(() -> new NoSuchElementException("No readings found"));
     }
-    */
+
     @Transactional(readOnly = true)
     public List<WeatherReadingResponseDTO> getAll() {
         return repository.findAll().stream()
                 .map(WeatherReadingResponseDTO::from)
                 .toList();
-    }
-    @Transactional(readOnly = true)
-    public WeatherReadingResponseDTO getById(long id){
-        return repository.findById(id)
-                .map(WeatherReadingResponseDTO::from)
-                .orElseThrow(() -> new NoSuchElementException("Reading not found"));
     }
 }
