@@ -17,7 +17,7 @@ public class WeatherReading {
     @Column(name = "value")
     private double value;
     @Column(name = "sensor_unit")
-    private String unit;
+    private String sensorUnit;
     @Column(name = "time_stamp")
     private String timestamp;
 
@@ -43,7 +43,7 @@ public class WeatherReading {
     }
 
     public String getSensorUnit() {
-        return this.unit;
+        return this.sensorUnit;
     }
     public Instant getTimestamp() {
         return convertStringUnixTimeToInstant(this.timestamp);
