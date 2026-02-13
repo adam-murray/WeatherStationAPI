@@ -18,13 +18,16 @@ public class WeatherReportController {
     @GetMapping("/latest")
     public WeatherReadingResponseDTO getLatest(){
         /*
-        This endpoint returns the latest single reading from the sensors
+        This endpoint returns the latest single reading from the sensors.
          */
         return weatherService.getLatest();
     }
 
     @GetMapping("/current")
     public List<WeatherReadingResponseDTO> getCurrent(){
+        /*
+        Returns a list of readings, filtered to be unique by sensor type and ordered chronologically.
+         */
         return weatherService.getCurrent();
     }
 
