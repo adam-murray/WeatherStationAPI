@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class WeatherQueryService {
@@ -42,8 +41,5 @@ public class WeatherQueryService {
         return repository.findAll().stream()
                 .map(WeatherReadingResponseDTO::from)
                 .toList();
-    }
-    public void save(WeatherReading weatherReading){
-        repository.save(weatherReading);
     }
 }

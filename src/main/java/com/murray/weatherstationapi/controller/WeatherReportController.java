@@ -35,11 +35,4 @@ public class WeatherReportController {
     public List<WeatherReadingResponseDTO> getAll() {
         return weatherService.getAll();
     }
-
-    @PostMapping("/submit-reading")
-    WeatherReading newReading(@RequestBody WeatherReading newReading){
-        weatherService.save(newReading);
-        System.out.println("Reading: " + newReading.getReadingId() + " saved to DB.");
-        return newReading;
-    }
 }
