@@ -32,3 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 weather.db
+
+# Ignore properties until proper safety measures can be taken in the cloud!
+application.properties

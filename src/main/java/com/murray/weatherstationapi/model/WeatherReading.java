@@ -1,37 +1,51 @@
 package com.murray.weatherstationapi.model;
 
-import com.murray.weatherstationapi.model.datatypes.SensorType;
-import com.murray.weatherstationapi.model.datatypes.SensorUnit;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 
 @Entity
+@Table(name = "readings")
 public class WeatherReading {
     @Id
-    @GeneratedValue
+    @Column(name = "reading_id")
+    private String readingId;
+    @Column(name = "sensor_id")
     private String sensorId;
-    private SensorType sensorType;
+    @Column(name = "sensor_type")
+    private String sensorType;
+    @Column(name = "value")
     private double value;
-    private SensorUnit unit;
-    Instant timestamp;
+    @Column(name = "sensor_unit")
+    private String sensorUnit;
+    @Column(name = "time_stamp")
+    private String timestamp;
 
+    public Instant convertStringUnixTimeToInstant(String timestampAsString){
+        try{
+            long timestampAsLong = Long.parseLong(timestampAsString);
+            return Instant.ofEpochMilli(timestampAsLong);
+        }
+        catch (NumberFormatException e) {
+            System.err.println("Could not convert timestamp, defaulting to now");
+            return Instant.now();
+        }
+    }
+    public String getReadingId() {return this.readingId; }
     public String getSensorId() {
         return this.sensorId;
     }
-    public SensorType getSensorType() {
+    public String getSensorType() {
         return this.sensorType;
     }
     public double getValue() {
         return this.value;
     }
 
-    public SensorUnit getSensorUnit() {
-        return this.unit;
+    public String getSensorUnit() {
+        return this.sensorUnit;
     }
     public Instant getTimestamp() {
-        return this.timestamp;
+        return convertStringUnixTimeToInstant(this.timestamp);
     }
 }
